@@ -17,6 +17,7 @@ import { ModuleI } from './moduleI/module.module';
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
+      autoSchemaFile: true,
       driver: ApolloDriver,
     }),
     ModuleA,
