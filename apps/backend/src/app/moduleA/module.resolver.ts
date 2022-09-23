@@ -1,18 +1,12 @@
-import { Query, Args, Int, Resolver } from "@nestjs/graphql";
-import { ModuleAService } from "./module.service";
+import { Query, Resolver } from "@nestjs/graphql";
 import { ModuleAEntity } from "./module.entity";
 
 @Resolver(() => ModuleAEntity)
 export class ModuleAResolver {
-  constructor(
-    private readonly service: ModuleAService,
-  ) {}
-
   @Query(() => ModuleAEntity)
-  moduleAQuery(
-    @Args('id', { type: () => Int })
-    id: number
-  ) {
-    return this.service.getEntity(id);
+  moduleAQuery() {
+    const entity = new ModuleAEntity();
+    entity.foo = 'module-a-entity';
+    return entity;
   }
 }
